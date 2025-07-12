@@ -5,9 +5,11 @@ import com.example.EmployeeInfoMgt.Entity.Employee;
 import com.example.EmployeeInfoMgt.Service.AddressService;
 import com.example.EmployeeInfoMgt.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/employees")
@@ -31,6 +33,15 @@ public class EmployeeController {
     public List<Employee> getAllEmployees() {
         return employeeService.getAll();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+        Optional<Employee> employee = employeeService.findById(id);
+        return employee.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+
 
     @PutMapping("/{id}")
     public Employee update(@PathVariable Long id, @RequestBody Employee updatedEmployee) {
