@@ -26,11 +26,13 @@ public class EmployeeController {
         employee.setAddress(savedAddress);
         return employeeService.save(employee);
     }
+    // View all employees
+    @GetMapping("/all")
+    public List<Employee> getAllEmployees() {
+        return employeeService.getAll();
+    }
 
-
-
-    // Update existing employee
-    /*@PutMapping("/{id}")
+    @PutMapping("/{id}")
     public Employee update(@PathVariable Long id, @RequestBody Employee updatedEmployee) {
         return employeeService.findById(id).map(emp -> {
             emp.setName(updatedEmployee.getName());
@@ -44,12 +46,7 @@ public class EmployeeController {
         }).orElse(null);
     }
 
-    // View all employees
-    @GetMapping("/all")
-    public List<Employee> getAllEmployees() {
-        return employeeService.getAll();
-    }
-
+    /*
     // Search employee
 
 */
