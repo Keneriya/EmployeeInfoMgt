@@ -16,7 +16,7 @@ public class EmployeeService {
     public Employee save(Employee employee){
         return employeeRepository.save(employee);
     }
-
+/*
     public Optional<Employee> findById(Long id){
         return employeeRepository.findById(id);
     }
@@ -35,5 +35,5 @@ public class EmployeeService {
 
     public List<Employee> SearchByPhone(String phone){
         return employeeRepository.findByPhoneContaining(phone);
-    }
+    }*/
 }

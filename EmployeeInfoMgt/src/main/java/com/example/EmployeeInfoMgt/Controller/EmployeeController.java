@@ -30,7 +30,7 @@ public class EmployeeController {
 
 
     // Update existing employee
-    @PutMapping("/{id}")
+    /*@PutMapping("/{id}")
     public Employee update(@PathVariable Long id, @RequestBody Employee updatedEmployee) {
         return employeeService.findById(id).map(emp -> {
             emp.setName(updatedEmployee.getName());
@@ -51,19 +51,6 @@ public class EmployeeController {
     }
 
     // Search employee
-    @GetMapping("/search")
-    public List<Employee> search(@RequestParam(required = false) String name,
-                                 @RequestParam(required = false) String phone,
-                                 @RequestParam(required = false) String email) {
-        if (name != null && !name.isEmpty()) {
-            return employeeService.searchByName(name);
-        } else if (phone != null && !phone.isEmpty()) {
-            return employeeService.searchByPhone(phone);
-        } else if (email != null && !email.isEmpty()) {
-            return employeeService.searchByEmail(email);
-        } else {
-            return List.of(); // or return all employees, based on your preference
-        }
-    }
 
+*/
 }
