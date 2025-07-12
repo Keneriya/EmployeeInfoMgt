@@ -40,9 +40,6 @@ public class EmployeeController {
         return employee.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-
-
-
     @PutMapping("/{id}")
     public Employee update(@PathVariable Long id, @RequestBody Employee updatedEmployee) {
         return employeeService.findById(id).map(emp -> {
@@ -55,6 +52,15 @@ public class EmployeeController {
 
             return employeeService.save(emp);
         }).orElse(null);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable Long id) {
+        boolean deleted = employeeService.deleteById(id);
+        if (deleted) {
+            return ResponseEntity.ok("Employee with ID " + id + " deleted successfully.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     /*

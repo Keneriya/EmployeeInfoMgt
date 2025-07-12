@@ -23,6 +23,14 @@ public class EmployeeService {
     public Optional<Employee> findById(Long id) {
         return employeeRepository.findById(id);
     }
+    public boolean deleteById(Long id) {
+        if (employeeRepository.existsById(id)) {
+            employeeRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 
